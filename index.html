@@ -987,10 +987,21 @@
       document.getElementById('disc-email').style.borderColor = 'rgba(255,65,88,0.8)';
       return;
     }
-    // Hook this up to your email/SMS provider (Klaviyo, Mailchimp, etc.)
-    // For now: show the success state
-    document.getElementById('discount-form').style.display = 'none';
-    document.getElementById('discount-success').style.display = 'block';
+    fetch('https://script.google.com/macros/s/AKfycbxLf2Unco_13nKkUmIue6_-j6Hwwc9GV27CKX6Fc4_Ydv0GF6bnvsB7AOvnaYJAJZVr/exec', {
+  method: 'POST',
+  body: JSON.stringify({
+    email: email,
+    phone: phone
+  })
+}).then(function() {
+  document.getElementById('discount-form').style.display = 'none';
+  document.getElementById('discount-success').style.display = 'block';
+}).catch(function() {
+  document.getElementById('discount-form').style.display = 'none';
+  document.getElementById('discount-success').style.display = 'block';
+});
+  document.getElementById('discount-form').style.display = 'none';
+  document.getElementById('discount-success').style.display = 'block';
   });
 })();
 </script>
